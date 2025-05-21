@@ -13,14 +13,14 @@ const OffCanvas = ({ menuOpen }) => {
 					width: "100%",
 					height: "calc(100% - 100px)",
 					backgroundColor: "rgba(0, 0, 0, 0.5)",
-					zIndex: 1001,
+					zIndex: 9999,
 					display: menuOpen ? "block" : "none",
 				}}
 			></div>
 			<div
 				className={`offcanvas-menu-wrapper ${menuOpen ? "active" : ""}`}
 				style={{
-					zIndex: 1002,
+					zIndex: 10000,
 					position: "fixed",
 					top: "85px",
 					right: 0,
