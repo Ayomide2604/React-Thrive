@@ -5,7 +5,7 @@ import logo from "../assets/img/site_logo.png";
 import OffCanvas from "./OffCanvas";
 import Topbar from "./Topbar";
 
-const Header = () => {
+const Header = ({ onAppointmentClick }) => {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [isTopbarVisible, setIsTopbarVisible] = useState(true);
 
@@ -82,8 +82,10 @@ const Header = () => {
 								<a
 									href="#"
 									className="primary-btn"
-									data-toggle="modal"
-									data-target="#appointmentModal"
+									onClick={(e) => {
+										e.preventDefault();
+										onAppointmentClick();
+									}}
 								>
 									Appointment
 								</a>
@@ -99,7 +101,11 @@ const Header = () => {
 					)}
 				</div>
 			</div>
-			<OffCanvas menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+			<OffCanvas
+				menuOpen={menuOpen}
+				setMenuOpen={setMenuOpen}
+				onAppointmentClick={onAppointmentClick}
+			/>
 		</header>
 	);
 };

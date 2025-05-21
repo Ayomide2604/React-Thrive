@@ -10,20 +10,26 @@ import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import ServiceListScreen from "./screens/ServiceListScreen";
 import ServiceDetail from "./pages/ServiceDetail";
+import ConsultationModal from "./components/ConsultationModal";
 import useScrollToTop from "./hooks/useScrollToTop";
 
 function App() {
 	const [whatsappOpen, setWhatsappOpen] = useState(false);
+	const [consultationModalOpen, setConsultationModalOpen] = useState(false);
 	useScrollToTop();
 
 	const toggleChatBox = () => {
 		setWhatsappOpen(!whatsappOpen);
 	};
 
+	const toggleConsultationModal = () => {
+		setConsultationModalOpen(!consultationModalOpen);
+	};
+
 	return (
 		<div className="app">
 			<Preloader />
-			<Header />
+			<Header onAppointmentClick={toggleConsultationModal} />
 			<div
 				style={{
 					minHeight: "100vh",
@@ -43,6 +49,10 @@ function App() {
 				SetIsOpen={setWhatsappOpen}
 				isOpen={whatsappOpen}
 				toggleChatBox={toggleChatBox}
+			/>
+			<ConsultationModal
+				isOpen={consultationModalOpen}
+				onClose={toggleConsultationModal}
 			/>
 		</div>
 	);

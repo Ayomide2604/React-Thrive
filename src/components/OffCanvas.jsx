@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/offcanvas_logo.png";
 
-const OffCanvas = ({ menuOpen, setMenuOpen }) => {
+const OffCanvas = ({ menuOpen, setMenuOpen, onAppointmentClick }) => {
 	return (
 		<>
 			{menuOpen && (
@@ -67,8 +67,11 @@ const OffCanvas = ({ menuOpen, setMenuOpen }) => {
 					<Link
 						href="#"
 						className="primary-btn"
-						data-toggle="modal"
-						data-target="#appointmentModal"
+						onClick={(e) => {
+							e.preventDefault();
+							onAppointmentClick();
+							setMenuOpen(false);
+						}}
 					>
 						Appointment
 					</Link>
