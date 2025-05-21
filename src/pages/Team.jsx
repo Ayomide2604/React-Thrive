@@ -1,5 +1,5 @@
-import team from "../assets/img/team/team-1.jpg";
-
+import Employee from "../components/Employee";
+import employees from "../data/employees";
 const Team = () => {
 	return (
 		<section className="team spad">
@@ -13,27 +13,14 @@ const Team = () => {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-lg-4 col-md-6 col-sm-6">
-						<div className="team__item">
-							<img src={team} alt="Team Member" />
-							<h5>Name Name (PT)</h5>
-							<span>Lead Physiotherapist</span>
-						</div>
-					</div>
-					<div className="col-lg-4 col-md-6 col-sm-6">
-						<div className="team__item">
-							<img src={team} alt="Team Member" />
-							<h5>Name Name</h5>
-							<span>Position</span>
-						</div>
-					</div>
-					<div className="col-lg-4 col-md-6 col-sm-6">
-						<div className="team__item">
-							<img src={team} alt="Team Member" />
-							<h5>Name Name</h5>
-							<span>Position</span>
-						</div>
-					</div>
+					{employees.map((employee) => (
+						<Employee
+							key={employee.id}
+							name={employee.name}
+							position={employee.position}
+							image={employee.image}
+						/>
+					))}
 				</div>
 			</div>
 		</section>

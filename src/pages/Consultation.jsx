@@ -1,5 +1,13 @@
 import { FaCalendar, FaPlay } from "react-icons/fa";
+import { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TextField } from "@mui/material";
+
 const Consultation = () => {
+	const [selectedDate, setSelectedDate] = useState(null);
+
 	return (
 		<section className="consultation">
 			<div className="container">
@@ -29,21 +37,52 @@ const Consultation = () => {
 									placeholder="Phone"
 									required
 								/>
-								<div className="datepicker__item d-flex align-items-center">
-									<input
-										type="text"
-										placeholder="Preferred Date"
-										className="datepicker"
-										required
-									/>
-									<FaCalendar
-										style={{
-											position: "absolute",
-											right: "10px",
-											top: "15px",
-											cursor: "pointer",
-										}}
-									/>
+								<div className="datepicker__item d-flex align-items-center position-relative mb-3">
+									<LocalizationProvider dateAdapter={AdapterDateFns}>
+										<DatePicker
+											value={selectedDate}
+											onChange={(newValue) => setSelectedDate(newValue)}
+											renderInput={(params) => (
+												<TextField
+													{...params}
+													className="form-control datepicker"
+													placeholder="Preferred Date"
+													required
+													fullWidth
+													sx={{
+														"& .MuiInputBase-root": {
+															height: "100%",
+															width: "100%",
+														},
+														"& .MuiInputBase-input": {
+															height: "100%",
+															padding: "10px 15px",
+														},
+														"& .MuiOutlinedInput-notchedOutline": {
+															border: "none",
+														},
+														"& .MuiInputAdornment-root": {
+															position: "absolute",
+															right: "10px",
+															top: "50%",
+															transform: "translateY(-50%)",
+														},
+													}}
+												/>
+											)}
+											minDate={new Date()}
+											slotProps={{
+												popper: {
+													sx: {
+														"& .MuiPaper-root": {
+															width: "100%",
+															maxWidth: "320px",
+														},
+													},
+												},
+											}}
+										/>
+									</LocalizationProvider>
 								</div>
 								<textarea
 									className="form-control mb-3"

@@ -4,6 +4,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Whatsapp from "./components/Whatsapp";
+import Preloader from "./components/Preloader";
 import HomeScreen from "./screens/HomeScreen";
 import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
@@ -26,8 +27,14 @@ function App() {
 
 	return (
 		<div className="app">
+			<Preloader />
 			<Header />
-			<div style={{ minHeight: "100vh" }}>
+			<div
+				style={{
+					minHeight: "100vh",
+					paddingTop: "85px",
+				}}
+			>
 				<Routes>
 					<Route index element={<HomeScreen />} />
 					<Route path="/about" element={<AboutScreen />} />
