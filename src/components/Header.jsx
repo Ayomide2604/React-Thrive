@@ -38,7 +38,7 @@ const Header = () => {
 						window.innerWidth >= 768 ? (isTopbarVisible ? "40px" : "0") : "0",
 					left: 0,
 					right: 0,
-					zIndex: 1000,
+					zIndex: 1002,
 					transition: "top 0.3s ease-in-out",
 				}}
 			>

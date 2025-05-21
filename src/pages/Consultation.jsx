@@ -37,7 +37,7 @@ const Consultation = () => {
 					<div className="col-lg-4">
 						<div
 							className="consultation__form"
-							style={{ position: "relative", zIndex: 1003 }}
+							style={{ position: "relative", zIndex: 1 }}
 						>
 							<div className="section-title">
 								<span>REQUEST FOR AN</span>
