@@ -35,7 +35,7 @@ const Footer = () => {
 							<h5>Contact Us</h5>
 							<ul>
 								<li>
-									<FaPhone /> <span>"+(234) 703 970 8403</span>
+									<FaPhone /> <span>+(234) 703 970 8403</span>
 								</li>
 								<li>
 									<FaEnvelope />
