@@ -1,34 +1,38 @@
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/offcanvas_logo.png";
+
 const OffCanvas = ({ menuOpen }) => {
 	return (
-		<div>
-			<div
-				className="offcanvas-menu-overlay"
-				style={{
-					position: "fixed",
-					top: "85px",
-					left: 0,
-					width: "100%",
-					height: "calc(100% - 100px)",
-					backgroundColor: "rgba(0, 0, 0, 0.5)",
-					zIndex: 9999,
-					display: menuOpen ? "block" : "none",
-				}}
-			></div>
+		<>
+			{menuOpen && (
+				<div
+					className="offcanvas-menu-overlay"
+					style={{
+						position: "fixed",
+						top: "85px",
+						left: 0,
+						width: "100%",
+						height: "calc(100% - 100px)",
+						backgroundColor: "rgba(0, 0, 0, 0.5)",
+						zIndex: 9999,
+						opacity: 1,
+						transition: "opacity 0.3s ease-in-out",
+					}}
+				/>
+			)}
 			<div
 				className={`offcanvas-menu-wrapper ${menuOpen ? "active" : ""}`}
 				style={{
 					zIndex: 10000,
 					position: "fixed",
 					top: "85px",
-					right: 0,
+					right: menuOpen ? 0 : "-300px",
 					width: "300px",
 					height: "calc(100% - 100px)",
 					backgroundColor: "#fff",
-					transform: menuOpen ? "translateX(0)" : "translateX(100%)",
-					transition: "transform 0.3s ease-in-out",
+					transition: "right 0.3s ease-in-out",
+					visibility: menuOpen ? "visible" : "hidden",
 				}}
 			>
 				<div className="offcanvas__logo" style={{ padding: "20px" }}>
@@ -79,7 +83,7 @@ const OffCanvas = ({ menuOpen }) => {
 					</a>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 };
 
