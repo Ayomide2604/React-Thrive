@@ -1,17 +1,23 @@
-import { useState } from "react";
-import {
-	FaFacebook,
-	FaInstagram,
-	FaWhatsapp,
-	FaPhone,
-	FaClock,
-	FaBars,
-	FaTimes,
-} from "react-icons/fa";
+import { useState, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import logo from "../assets/img/site_logo.png";
 import OffCanvas from "./OffCanvas";
+import Topbar from "./Topbar";
+
 const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
+	const [isTopbarVisible, setIsTopbarVisible] = useState(true);
+
+	useEffect(() => {
+		const handleScroll = () => {
+			const currentScrollY = window.scrollY;
+			setIsTopbarVisible(currentScrollY <= 0);
+		};
+
+		window.addEventListener("scroll", handleScroll);
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
 
 	const toggleMenu = () => {
 		setMenuOpen(!menuOpen);
@@ -19,44 +25,27 @@ const Header = () => {
 
 	return (
 		<header className="header">
-			<div className="header__top">
-				<div className="container">
-					<div className="row">
-						<div className="col-lg-8">
-							<ul className="header__top__left">
-								<li>
-									<FaPhone /> <span className="ms-2">+(234) 812 666 0484</span>
-								</li>
-								<li>
-									<FaClock />
-									<span className="ms-2">Mon to Sat 9:00am to 06:00pm</span>
-								</li>
-							</ul>
-						</div>
-						<div className="col-lg-4">
-							<div className="header__top__right">
-								<a href="#">
-									<FaFacebook />
-								</a>
-								<a href="#">
-									<FaWhatsapp />
-								</a>
-								<a href="#">
-									<FaInstagram />
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
+			<div className="d-md-block d-none">
+				<Topbar />
 			</div>
 			<div
 				className="d-flex justify-content-between align-items-center"
-				style={{ backgroundColor: "#273a55", maxHeight: "100px" }}
+				style={{
+					backgroundColor: "#273a55",
+					maxHeight: "100px",
+					position: "fixed",
+					top:
+						window.innerWidth >= 768 ? (isTopbarVisible ? "40px" : "0") : "0",
+					left: 0,
+					right: 0,
+					zIndex: 1000,
+					transition: "top 0.3s ease-in-out",
+				}}
 			>
-				<div className="row align-items-center">
+				<div className="row align-items-center w-100">
 					<div className="col-lg-2">
 						<div className="header__logo">
-							<a href="/">
+							<Link to="/">
 								<img
 									src={logo}
 									alt="Logo"
@@ -68,7 +57,7 @@ const Header = () => {
 									className="img-fluid d-md-none "
 									style={{ width: "150px" }}
 								/>
-							</a>
+							</Link>
 						</div>
 					</div>
 					<div className="col-lg-10">
@@ -76,16 +65,16 @@ const Header = () => {
 							<nav className="header__menu">
 								<ul>
 									<li>
-										<a href="">Home</a>
+										<Link to="/">Home</Link>
 									</li>
 									<li>
-										<a href="../about.html/">About</a>
+										<Link to="/about">About</Link>
 									</li>
 									<li>
-										<a href="../services.html">Services</a>
+										<Link to="/services">Services</Link>
 									</li>
 									<li>
-										<a href="../contact.html">Contact</a>
+										<Link to="/contact">Contact</Link>
 									</li>
 								</ul>
 							</nav>

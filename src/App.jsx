@@ -1,20 +1,41 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Whatsapp from "./components/Whatsapp";
+import HomeScreen from "./screens/HomeScreen";
+import AboutScreen from "./screens/AboutScreen";
+import ContactScreen from "./screens/ContactScreen";
+import ServiceListScreen from "./screens/ServiceListScreen";
+import ServiceDetail from "./pages/ServiceDetail";
+import useScrollToTop from "./hooks/useScrollToTop";
 
 function App() {
 	const [whatsappOpen, setWhatsappOpen] = useState(false);
+	const location = useLocation();
+	const scrollToTop = useScrollToTop({ behavior: "smooth", duration: 500 });
 
 	const toggleChatBox = () => {
 		setWhatsappOpen(!whatsappOpen);
 	};
 
+	useEffect(() => {
+		scrollToTop();
+	}, [location.pathname, scrollToTop]);
+
 	return (
 		<div className="app">
 			<Header />
-			<div className="vh-100"></div>
+			<div style={{ minHeight: "100vh" }}>
+				<Routes>
+					<Route index element={<HomeScreen />} />
+					<Route path="/about" element={<AboutScreen />} />
+					<Route path="/services" element={<ServiceListScreen />} />
+					<Route path="/services/:id" element={<ServiceDetail />} />
+					<Route path="/contact" element={<ContactScreen />} />
+				</Routes>
+			</div>
 			<Footer />
 			<Whatsapp
 				SetIsOpen={setWhatsappOpen}
