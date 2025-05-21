@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import services from "../data/services";
 import { FaRegCheckCircle } from "react-icons/fa";
-import BackButton from "../components/BackButton";
 const ServiceDetail = () => {
 	const { id } = useParams();
 
@@ -9,7 +8,6 @@ const ServiceDetail = () => {
 	return (
 		<div>
 			<section className="service-detail spad">
-			<BackButton />
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-12">
