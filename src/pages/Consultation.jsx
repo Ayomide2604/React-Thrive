@@ -1,5 +1,5 @@
+import React, { useState } from "react";
 import { FaPlay } from "react-icons/fa";
-import { useState } from "react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -7,49 +7,83 @@ import { TextField } from "@mui/material";
 
 const Consultation = () => {
 	const [selectedDate, setSelectedDate] = useState(null);
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		phone: "",
+		reason: "",
+	});
+
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setFormData({
+			...formData,
+			[name]: value,
+		});
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		// Handle form submission logic here
+		console.log("Form submitted:", formData, "Selected Date:", selectedDate);
+		alert("Appointment booked successfully!");
+	};
 
 	return (
 		<section className="consultation">
 			<div className="container">
 				<div className="row">
 					<div className="col-lg-4">
-						<div className="consultation__form">
+						<div
+							className="consultation__form"
+							style={{ position: "relative", zIndex: 1003 }}
+						>
 							<div className="section-title">
 								<span>REQUEST FOR AN</span>
 								<h2>Appointment</h2>
 							</div>
-							<form action="#">
+							<form onSubmit={handleSubmit} noValidate>
 								<input
 									className="form-control"
 									type="text"
+									name="name"
 									placeholder="Name"
+									value={formData.name}
+									onChange={handleChange}
 									required
 								/>
 								<input
 									className="form-control"
 									type="email"
+									name="email"
 									placeholder="Email"
+									value={formData.email}
+									onChange={handleChange}
 									required
 								/>
 								<input
 									className="form-control"
 									type="text"
+									name="phone"
 									placeholder="Phone"
+									value={formData.phone}
+									onChange={handleChange}
 									required
 								/>
 								<div className="datepicker__item d-flex align-items-center position-relative mb-3">
 									<LocalizationProvider dateAdapter={AdapterDateFns}>
 										<DatePicker
+											className="mb-3"
 											value={selectedDate}
 											onChange={(newValue) => setSelectedDate(newValue)}
-											renderInput={(params) => (
-												<TextField
-													{...params}
-													className="form-control datepicker"
-													placeholder="Preferred Date"
-													required
-													fullWidth
-													sx={{
+											slotProps={{
+												textField: {
+													className: "form-control datepicker",
+													placeholder: "Preferred Date",
+													required: true,
+													fullWidth: true,
+													sx: {
 														"& .MuiInputBase-root": {
 															height: "100%",
 															width: "100%",
@@ -67,11 +101,8 @@ const Consultation = () => {
 															top: "50%",
 															transform: "translateY(-50%)",
 														},
-													}}
-												/>
-											)}
-											minDate={new Date()}
-											slotProps={{
+													},
+												},
 												popper: {
 													sx: {
 														"& .MuiPaper-root": {
@@ -81,16 +112,24 @@ const Consultation = () => {
 													},
 												},
 											}}
+											minDate={new Date()}
 										/>
 									</LocalizationProvider>
 								</div>
 								<textarea
 									className="form-control mb-3"
+									name="reason"
 									placeholder="Reason for appointment"
 									rows="5"
+									value={formData.reason}
+									onChange={handleChange}
 									required
 								></textarea>
-								<button type="submit" className="site-btn">
+								<button
+									type="button"
+									onClick={handleSubmit}
+									className="site-btn"
+								>
 									Book Appointment
 								</button>
 							</form>
@@ -115,8 +154,8 @@ const Consultation = () => {
 									</div>
 								</div>
 								<div className="col-lg-6 col-md-6">
-									<h5 className="mb-3" color="#13a2b7">
-										What is Physiotherapy ?
+									<h5 className="mb-3" style={{ color: "#13a2b7" }}>
+										What is Physiotherapy?
 									</h5>
 									<div
 										className="consultation__video set-bg"

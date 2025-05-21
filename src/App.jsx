@@ -10,24 +10,18 @@ import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import ServiceListScreen from "./screens/ServiceListScreen";
 import ServiceDetail from "./pages/ServiceDetail";
-import useScrollToTop from "./hooks/useScrollToTop";
 
 function App() {
 	const [whatsappOpen, setWhatsappOpen] = useState(false);
 	const location = useLocation();
-	const scrollToTop = useScrollToTop({ behavior: "smooth", duration: 500 });
 
 	const toggleChatBox = () => {
 		setWhatsappOpen(!whatsappOpen);
 	};
 
-	useEffect(() => {
-		scrollToTop();
-	}, [location.pathname, scrollToTop]);
-
 	return (
 		<div className="app">
-			<Preloader />
+			{/* <Preloader /> */}
 			<Header />
 			<div
 				style={{
