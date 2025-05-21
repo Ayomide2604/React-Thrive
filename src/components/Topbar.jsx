@@ -52,7 +52,7 @@ const Topbar = () => {
 							<a href="#">
 								<FaFacebook />
 							</a>
-							<Link to="https://wa.me/+2347039708403/">
+							<Link to="https://wa.me/+2347039708403/" target="_blank">
 								<FaWhatsapp />
 							</Link>
 							<a href="#">
