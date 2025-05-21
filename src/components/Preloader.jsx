@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./Preloader.css";
 
 const Preloader = () => {
 	const [loading, setLoading] = useState(true);

@@ -99,7 +99,7 @@ const Header = () => {
 					)}
 				</div>
 			</div>
-			<OffCanvas menuOpen={menuOpen} />
+			<OffCanvas menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 		</header>
 	);
 };

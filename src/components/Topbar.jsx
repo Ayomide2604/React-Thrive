@@ -6,6 +6,7 @@ import {
 	FaClock,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Topbar = () => {
 	const [isVisible, setIsVisible] = useState(true);
@@ -22,7 +23,7 @@ const Topbar = () => {
 
 	return (
 		<div
-			className="header__top d-none d-md-block py-1 "
+			className="header__top d-none d-md-block"
 			style={{
 				position: "fixed",
 				top: 0,
@@ -38,7 +39,7 @@ const Topbar = () => {
 					<div className="col-lg-8">
 						<ul className="header__top__left">
 							<li>
-								<FaPhone /> <span className="mx-2">+(234) 812 666 0484</span>
+								<FaPhone /> <span className="mx-2">+(234) 703 970 8403</span>
 							</li>
 							<li>
 								<FaClock />
@@ -51,9 +52,9 @@ const Topbar = () => {
 							<a href="#">
 								<FaFacebook />
 							</a>
-							<a href="#">
+							<Link to="https://wa.me/+2347039708403/">
 								<FaWhatsapp />
-							</a>
+							</Link>
 							<a href="#">
 								<FaInstagram />
 							</a>

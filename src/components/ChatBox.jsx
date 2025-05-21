@@ -11,7 +11,7 @@ const ChatBox = ({ onClose }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const phoneNumber = "+2348053165091";
+		const phoneNumber = "+2347039708403";
 		const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
 			message
 		)}`;

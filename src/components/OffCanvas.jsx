@@ -2,7 +2,7 @@ import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../assets/img/offcanvas_logo.png";
 
-const OffCanvas = ({ menuOpen }) => {
+const OffCanvas = ({ menuOpen, setMenuOpen }) => {
 	return (
 		<>
 			{menuOpen && (
@@ -26,10 +26,8 @@ const OffCanvas = ({ menuOpen }) => {
 				style={{
 					zIndex: 10000,
 					position: "fixed",
-					top: "85px",
 					right: menuOpen ? 0 : "-300px",
 					width: "300px",
-					height: "calc(100% - 100px)",
 					backgroundColor: "#fff",
 					transition: "right 0.3s ease-in-out",
 					visibility: menuOpen ? "visible" : "hidden",
@@ -42,11 +40,15 @@ const OffCanvas = ({ menuOpen }) => {
 							alt="Logo"
 							className="img-fluid d-flex"
 							style={{ transform: "scale(1.3); transform-origin: center" }}
+							onClick={() => setMenuOpen(!menuOpen)}
 						/>
 					</Link>
 				</div>
 				<div id="mobile-menu-wrap">
-					<ul className="offcanvas__widget">
+					<ul
+						className="offcanvas__widget"
+						onClick={() => setMenuOpen(!menuOpen)}
+					>
 						<li className="active">
 							<Link to="/">Home</Link>
 						</li>

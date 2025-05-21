@@ -5,7 +5,11 @@ const Employee = ({ name, position, image }) => {
 	return (
 		<div className="col-lg-4 col-md-6 col-sm-6">
 			<div className="team__item">
-				<img src={image || defaultImage} alt="Team Member" />
+				<img
+					src={image || defaultImage}
+					alt="Team Member"
+					className="img-fluid"
+				/>
 				<h5>{titleCase(name)}</h5>
 				<span>{titleCase(position)}</span>
 			</div>

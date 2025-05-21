@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -10,10 +10,11 @@ import AboutScreen from "./screens/AboutScreen";
 import ContactScreen from "./screens/ContactScreen";
 import ServiceListScreen from "./screens/ServiceListScreen";
 import ServiceDetail from "./pages/ServiceDetail";
+import useScrollToTop from "./hooks/useScrollToTop";
 
 function App() {
 	const [whatsappOpen, setWhatsappOpen] = useState(false);
-	const location = useLocation();
+	useScrollToTop();
 
 	const toggleChatBox = () => {
 		setWhatsappOpen(!whatsappOpen);
@@ -21,12 +22,12 @@ function App() {
 
 	return (
 		<div className="app">
-			{/* <Preloader /> */}
+			<Preloader />
 			<Header />
 			<div
 				style={{
 					minHeight: "100vh",
-					paddingTop: "85px",
+					paddingTop: "60px",
 				}}
 			>
 				<Routes>
