@@ -142,12 +142,11 @@ const ConsultationModal = ({ isOpen, onClose }) => {
 									role="alert"
 								>
 									{submitStatus.message}
-									<button
-										type="button"
-										className="btn-close"
+
+									<FaTimes
 										onClick={() => setSubmitStatus({ type: "", message: "" })}
-										aria-label="Close"
-									></button>
+										className="btn-close"
+									/>
 								</div>
 							)}
 							<form ref={formRef} onSubmit={handleSubmit} noValidate>

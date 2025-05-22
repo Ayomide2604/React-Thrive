@@ -5,6 +5,7 @@ import {
 	FaPhone,
 	FaWhatsapp,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Footer = () => {
 	return (
 		<footer className="footer mt-5">
@@ -15,7 +16,13 @@ const Footer = () => {
 							<h5>Company</h5>
 							<ul>
 								<li>
-									<a href="#">About Us</a>
+									<Link to="/about">About Us</Link>
+								</li>
+								<li>
+									<Link to="#">Our Mission</Link>
+								</li>
+								<li>
+									<Link to="#">Careers</Link>
 								</li>
 							</ul>
 						</div>
@@ -25,7 +32,13 @@ const Footer = () => {
 							<h5>Quick links</h5>
 							<ul>
 								<li>
-									<a href="#">Contact Us </a>
+									<Link href="#">Contact Us </Link>
+								</li>
+								<li>
+									<Link href="#">FAQs </Link>
+								</li>
+								<li>
+									<Link href="#">Blog </Link>
 								</li>
 							</ul>
 						</div>
@@ -52,9 +65,8 @@ const Footer = () => {
 						<div className="col-lg-7">
 							<div className="footer__copyright__text">
 								<p>
-									Copyright &copy;
-									<script>document.write(new Date().getFullYear());</script>
-									Thrive Physiotherapy. All rights reserved.
+									Copyright &copy; {new Date().getFullYear()} Thrive
+									Physiotherapy. All rights reserved.
 								</p>
 							</div>
 						</div>

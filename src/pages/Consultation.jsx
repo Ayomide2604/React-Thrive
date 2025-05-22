@@ -262,7 +262,7 @@ const Consultation = () => {
 										<p>
 											At Thrive Physiotherapy, we are committed to providing
 											top-notch care tailored to your needs. Our team of
-											experienced physiotherapists brings expertise and
+											experienced physiotherapists bring expertise and
 											compassion to every session, ensuring you receive the best
 											treatment possible.
 										</p>
@@ -273,14 +273,14 @@ const Consultation = () => {
 										What is Physiotherapy?
 									</h5>
 									<div
-										className="consultation__video set-bg"
+										className="consultation__video set-bg d-flex"
 										style={{ backgroundImage: "url(/consultation_video.jpg)" }}
 									>
 										<a
 											href="https://www.youtube.com/watch?v=DVvhOkRwdmQ"
 											className="play-btn video-popup"
 										>
-											<FaPlay />
+											<FaPlay size={15} />
 										</a>
 									</div>
 								</div>

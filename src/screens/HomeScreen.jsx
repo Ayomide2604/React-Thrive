@@ -9,7 +9,7 @@ const HomeScreen = () => {
 			<Hero />
 			<Consultation />
 			<ChooseUs />
-			<div className="d-flex justify-content-center">
+			<div className="d-flex justify-content-center p-5">
 				<ContactForm />
 			</div>
 		</>

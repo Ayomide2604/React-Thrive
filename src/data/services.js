@@ -135,9 +135,10 @@ const services = [
 		id: 4,
 		name: "Muscle & Joint Injuries",
 		image: skeleton,
-		title: "Our muscle and joint injury services focus on:",
-		subTitle: "Ensuring a smooth and effective recovery process.",
-		items: ["Back & neck pain", "Ankle sprains", "Plantar fasciitis"],
+		title:
+			"We offer specialized musculoskeletal services to address issues like:",
+		subTitle: "Helping patients regain strength and mobility.",
+		items: ["Back pain", "Sports Injuries", "Joint Replacements"],
 		detailHeader: `
       <p>
         At Thrive Home Physio, we provide specialized treatment for
@@ -195,7 +196,7 @@ const services = [
 		image: oncology,
 		title: "Our consultation services provide:",
 		subTitle: "To help you achieve your health goals.",
-		items: ["Back Pain", "Sports Injuries", "Joint replacements"],
+		items: ["Expert Advice", "Personalized Treatment Plans", "Ongoing Support"],
 		detailHeader: `
       <p>
         Diagnosis of cancer and undergoing treatment can be a
